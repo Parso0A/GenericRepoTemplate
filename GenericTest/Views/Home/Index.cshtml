@@ -1,0 +1,39 @@
+﻿@using GenericTestDomain.Service
+@using AjaxControlToolkit
+<div class="text-center">
+    <div class="form-group">
+        <form id="items" asp-controller="home" asp-action="submit">@(Html.DropDownList("type",Html.GetEnumSelectList<ObjectType>(),new {@class = "form-control" }))</form>
+    </div>
+    <div id="list">
+
+    </div>
+    <div id="create"></div>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    function submit() {
+        $.ajax({
+
+            type: "POST",
+            url: "/submit",
+            success: (response) => {
+                $('#list').html(response);
+            },
+            error: () => { }
+        })
+    }
+    $('#items').change(function () {
+        var d = document.getElementById('type')
+        $.ajax({
+            type: "GET",
+            url: `/submit?type=${d.selectedIndex}`,
+            success: (response) => {
+                $('#list').html(response);
+                $('#create').html('');
+            },
+            error: () => { }
+        })
+
+    })
+</script>

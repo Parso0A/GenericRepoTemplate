@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GenericTestDomain.Model.Organization>
+
+<p>
+    <a href="#" id="createorg">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Field)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personnel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Field)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personnel)
+            </td>
+            <td>
+                <a href="#" id=@("editorgan_"+item.Id) data-ajax="true">Edit</a> |
+                <a href="deleteorg?id=@item.Id.ToString()">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $('#createorg').click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/new?type=Organization",
+            success: function (response) {
+                $('#create').html(response);
+            },
+            error: function () {
+
+            }
+        })
+    })
+    $('[id^="editorgan_"]').click(function (e) {
+        
+        $.ajax({
+            type: "GET",
+            url: `/editorg?id=${e.target.id.slice(10)}`,
+            success: function (response) {
+                $('#create').html(response);
+            },
+            error: function () {
+
+            }
+        })
+    })
+</script>

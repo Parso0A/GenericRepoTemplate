@@ -1,0 +1,45 @@
+﻿@model GenericTestDomain.Model.Car
+
+
+<h1>New Car</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="newcar" method="post" asp-controller="Home" asp-action="CreateCar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TopSpeed" class="control-label"></label>
+                <input asp-for="TopSpeed" class="form-control" />
+                <span asp-validation-for="TopSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" value="@(GenericTestDomain.Service.ObjectType.Car)" name="type" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A1A28876-509E-4432-82F5-DD15E46B256E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FF99FD7D-5613-4A7C-B321-B88EAAD7740B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{6F768F7F-6CBF-402D-8608-D6F40ACC762E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{947DC66F-68BC-4817-B99F-CF11E350ACF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericTestDataAccess", "GenericTestDataAccess\GenericTestDataAccess.csproj", "{C8B75BC3-465B-412D-8926-9C0667FDCF4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericTestDomain", "GenericTestDomain\GenericTestDomain.csproj", "{48913F26-6E70-430B-94A5-425F3EFBDB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericTestService", "GenericTestService\GenericTestService.csproj", "{E5FCE036-A681-49A5-B98B-FB786960B41E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericTest", "GenericTest\GenericTest.csproj", "{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8B75BC3-465B-412D-8926-9C0667FDCF4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B75BC3-465B-412D-8926-9C0667FDCF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B75BC3-465B-412D-8926-9C0667FDCF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B75BC3-465B-412D-8926-9C0667FDCF4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48913F26-6E70-430B-94A5-425F3EFBDB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48913F26-6E70-430B-94A5-425F3EFBDB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48913F26-6E70-430B-94A5-425F3EFBDB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48913F26-6E70-430B-94A5-425F3EFBDB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FCE036-A681-49A5-B98B-FB786960B41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FCE036-A681-49A5-B98B-FB786960B41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FCE036-A681-49A5-B98B-FB786960B41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FCE036-A681-49A5-B98B-FB786960B41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8B75BC3-465B-412D-8926-9C0667FDCF4A} = {947DC66F-68BC-4817-B99F-CF11E350ACF4}
+		{48913F26-6E70-430B-94A5-425F3EFBDB90} = {FF99FD7D-5613-4A7C-B321-B88EAAD7740B}
+		{E5FCE036-A681-49A5-B98B-FB786960B41E} = {6F768F7F-6CBF-402D-8608-D6F40ACC762E}
+		{F959F2DC-0872-4EB4-BF0F-73878DD0D4B4} = {A1A28876-509E-4432-82F5-DD15E46B256E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37427C2B-10B9-4017-A356-675E1B921445}
+	EndGlobalSection
+EndGlobal
