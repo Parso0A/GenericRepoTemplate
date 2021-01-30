@@ -1,6 +1,7 @@
 ﻿using GenericTestDomain.Model;
 using GenericTestDomain.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,15 @@ namespace GenericTestDataAccess
                 return await Task.FromResult(false);
             }
         }
-        public Task<bool> Any(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
+        public Task<bool> Any(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> results = _context.Set<T>().Where(predicate);
-            foreach (Expression<Func<T, object>> includeExpression in includes)
-                results = results.Include(includeExpression);
+            
+            if(include != null)
+            {
+                results = include(results);
+            }
+               
             if (results.Any())
             {
                 return Task.FromResult(true);
@@ -42,11 +47,15 @@ namespace GenericTestDataAccess
                 return Task.FromResult(false);
             }
         }
-        public virtual async Task<bool> Delete(Expression<Func<T, bool>> identity, params Expression<Func<T, object>>[] includes)
+        public virtual async Task<bool> Delete(Expression<Func<T, bool>> identity, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> results = _context.Set<T>().Where(identity);
-            foreach (Expression<Func<T, object>> includeExpression in includes)
-                results = results.Include(includeExpression);
+            
+            if(include != null)
+            {
+                results = include(results);
+            }
+
             try
             {
                 _context.Set<T>().RemoveRange(results);
@@ -62,22 +71,30 @@ namespace GenericTestDataAccess
             _context.Set<T>().Remove(entity);
             return await Task.FromResult(true);
         }
-        public virtual async Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
+        public virtual async Task<T> FindBy(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> result = _context.Set<T>().Where(predicate);
-            foreach (Expression<Func<T, object>> includeExpression in includes)
-                result = result.Include(includeExpression);
+            
+            if(include != null)
+            {
+                result = include(result);
+            }
+
             return await result.FirstOrDefaultAsync();
         }
         public virtual async Task<List<T>> GetAll()
         {
             return _context.Set<T>().ToList();
         }
-        public virtual async Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
+        public virtual async Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> result = _context.Set<T>().Where(predicate);
-            foreach (Expression<Func<T, object>> includeExpression in includes)
-                result = result.Include(includeExpression);
+            
+            if(include != null)
+            {
+                result = include(result);
+            }
+
             return await result.ToListAsync();
         }
         public Task<bool> SaveAsync()
@@ -92,11 +109,15 @@ namespace GenericTestDataAccess
                 return Task.FromResult(false);
             }
         }
-        public virtual async Task<List<T>> SearchBy(Expression<Func<T, bool>> searchBy, params Expression<Func<T, object>>[] includes)
+        public virtual async Task<List<T>> SearchBy(Expression<Func<T, bool>> searchBy, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> result = _context.Set<T>().Where(searchBy);
-            foreach (Expression<Func<T, object>> includeExpression in includes)
-                result = result.Include(includeExpression);
+            
+            if(include != null)
+            {
+                result = include(result);
+            }
+
             return await result.ToListAsync();
         }
         public virtual async Task<bool> Update(T entity)
